@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #100c0a;
+  --color-surface: #1c1411;
+  --color-fg: #f4ebe3;
+  --color-muted: #a8988c;
+  --color-primary: #d6272a;
+  --color-accent: #e7b15a;
+  --color-border: #3a2c26;
+  --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Rajdhani", "Sora", ui-sans-serif, sans-serif;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+}
+
+.cinema {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 46%,
+    color-mix(in srgb, var(--color-bg) 88%, black) 100%
+  );
+}
+
+.damage-vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 28%,
+    color-mix(in srgb, var(--color-primary) 78%, black) 100%
+  );
+  opacity: 0;
+}
+
+.crosshair {
+  width: 0;
+  height: 0;
+}
+
+.crosshair span {
+  position: absolute;
+  background: var(--color-fg);
+  opacity: 0.9;
+}
+
+.crosshair .cu {
+  width: 2px;
+  height: 0.55rem;
+  left: -1px;
+  top: -0.95rem;
+}
+.crosshair .cd {
+  width: 2px;
+  height: 0.55rem;
+  left: -1px;
+  top: 0.4rem;
+}
+.crosshair .cl {
+  width: 0.55rem;
+  height: 2px;
+  left: -0.95rem;
+  top: -1px;
+}
+.crosshair .cr {
+  width: 0.55rem;
+  height: 2px;
+  left: 0.4rem;
+  top: -1px;
+}
+
+.crosshair.is-hit span {
+  background: var(--color-primary);
+}
+
+.panel {
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 24px 60px color-mix(in srgb, black 55%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .damage-vignette {
+    transition: none;
+  }
+}
